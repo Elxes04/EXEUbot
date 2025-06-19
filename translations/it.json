@@ -60,5 +60,6 @@
     "error_shortening_url": "Si è verificato un errore durante l'accorciamento dell'URL.",
     "provide_url_to_shorten": "Per favore, fornisci un URL da accorciare.",
     "invalid_time_format": "Formato di tempo non valido. Usa Xs, Xm o Xh.",
-    "schedule_message_success": "Pubblicherò '{text}' ogni {time_str} in questa chat. Per annullare, usa .cancsched"
+    "schedule_message_success": "Pubblicherò '{text}' ogni {time_str} in questa chat. Per annullare, usa .cancsched",
+    "dm_only_command": "Questo comando può essere usato solo in chat privata."
 }

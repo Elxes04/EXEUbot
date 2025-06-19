@@ -60,5 +60,6 @@
     "error_shortening_url": "Beim Verkürzen der URL ist ein Fehler aufgetreten.",
     "provide_url_to_shorten": "Bitte geben Sie eine URL zum Verkürzen an.",
     "invalid_time_format": "Ungültiges Zeitformat. Verwenden Sie Xs, Xm oder Xh.",
-    "schedule_message_success": "Ich werde '{text}' alle {time_str} in diesem Chat posten. Um abzubrechen, verwenden Sie .cancsched"
+    "schedule_message_success": "Ich werde '{text}' alle {time_str} in diesem Chat posten. Um abzubrechen, verwenden Sie .cancsched",
+    "dm_only_command":"Du kannst diesen Befehl nur in einer Direktnachtricht verwenden."
 }

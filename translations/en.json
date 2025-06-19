@@ -60,5 +60,6 @@
     "error_shortening_url": "An error occurred while shortening the URL.",
     "provide_url_to_shorten": "Please provide a URL to shorten.",
     "invalid_time_format": "Invalid time format. Use Xs, Xm or Xh.",
-    "schedule_message_success": "I will post '{text}' every {time_str} in this chat. To cancel, use .cancsched"
+    "schedule_message_success": "I will post '{text}' every {time_str} in this chat. To cancel, use .cancsched",
+    "dm_only_command": "You may only use this command in a private chat."
 }

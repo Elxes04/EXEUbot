@@ -4,6 +4,7 @@ import configparser
 from translations import translations
 from telethon import events
 from telethon.tl.functions.contacts import BlockRequest
+from telethon.tl.types import User
 
 
 config = configparser.ConfigParser()
@@ -34,9 +35,9 @@ def register(client):
                 await event.edit(translations['user_whitelisted'].format(user_id=user_id))
             else:
                 db.add_to_whitelist(user_id)
-                await event.reply(translations['user_added_whitelist'].format(user_id=user_id))
+                await event.edit(translations['user_added_whitelist'].format(user_id=user_id))
         except Exception as e:
-            await event.reply(translations['error_occurred'].format(error=str(e)))
+            await event.edit(translations['error_occurred'].format(error=str(e)))
 
     @client.on(events.NewMessage(pattern=r'^\.rmwl(?: |$)(.*)', outgoing=True))
     async def remove_whitelist(event):
@@ -50,11 +51,47 @@ def register(client):
 
             if db.is_whitelisted(user_id):
                 db.remove_from_whitelist(user_id)
-                await event.reply(translations['user_removed_whitelist'].format(user_id=user_id))
+                await event.edit(translations['user_removed_whitelist'].format(user_id=user_id))
             else:
                 await event.edit(translations['user_not_in_whitelist'].format(user_id=user_id))
         except Exception as e:
-            await event.reply(translations['error_occurred'].format(error=str(e)))
+            await event.edit(translations['error_occurred'].format(error=str(e)))
+
+    @client.on(events.NewMessage(pattern=r'^[\./!]rmwlu$', outgoing=True)) # removes from the whitelist the message reciver 
+    async def remove_whitelist_you(event):
+        try:
+            chat = await event.get_chat()
+            
+            if isinstance(chat, User):
+                user_id = chat.id  
+
+                if db.is_whitelisted(user_id):
+                    db.remove_from_whitelist(user_id)
+                    await event.edit(translations['user_removed_whitelist'].format(user_id=user_id))
+                else:
+                    await event.edit(translations['user_not_in_whitelist'].format(user_id=user_id))
+            else:
+                await event.edit(translations['dm_only_command'])
+        except Exception as e:
+            await event.edit(translations['error_occurred'].format(error=str(e)))
+        
+    @client.on(events.NewMessage(pattern=r'^[\./!]addwlu$', outgoing=True)) # adds to whitelist the message reciver 
+    async def add_whitelist_you(event):
+        try:
+            chat = await event.get_chat()
+            
+            if isinstance(chat, User):
+                user_id = chat.id  
+
+                if db.is_whitelisted(user_id):
+                    await event.edit(translations['user_whitelisted'].format(user_id=user_id))
+                else:
+                    db.add_to_whitelist(user_id)
+                    await event.edit(translations['user_added_whitelist'].format(user_id=user_id))
+            else:
+                await event.edit(translations['dm_only_command'])
+        except Exception as e:
+            await event.edit(translations['error_occurred'].format(error=str(e)))
 
     @client.on(events.NewMessage(incoming=True))
     async def handle_message(event):
