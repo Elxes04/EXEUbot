@@ -8,7 +8,7 @@ readme = "README.md"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 ipwhois = "^1.2.0"
 Telethon = "^1.36.0"
 cryptg = "^0.4.0"
@@ -20,7 +20,8 @@ urllib3 = "^2.2.2"
 tqdm = "^4.66.5"
 Faker = "^26.1.0"
 qrcode = "^7.4.2"
-yt-dlp = "^2024.8.6"
+yt-dlp = "^2024.12.13"
+ffmpeg-python = "^0.2.0"
 
 
 [build-system]

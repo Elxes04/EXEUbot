@@ -8,3 +8,5 @@ config.ini
 cookies/cookies.txt
 commands/sched.py
 commands/music_downloader.py
+downloads/
+config.ini
